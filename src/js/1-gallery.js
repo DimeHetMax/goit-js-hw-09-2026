@@ -91,7 +91,7 @@ const markup = images
 
 galleryUl.insertAdjacentHTML('beforeend', markup);
 
-let gallery = new SimpleLightbox('.gallery > li > a', {
+new SimpleLightbox('.gallery > li > a', {
   animationSpeed: 250,
   fadeSpeed: 250,
   captions: true,
@@ -101,4 +101,4 @@ let gallery = new SimpleLightbox('.gallery > li > a', {
   captionPosition: 'bottom',
   captionDelay: 250,
 });
-gallery.on('show.simplelightbox');
+

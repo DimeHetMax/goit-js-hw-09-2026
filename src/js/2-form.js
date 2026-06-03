@@ -1,23 +1,34 @@
-const form = document.querySelector('.feedback-form');
+const formEl = document.querySelector('.feedback-form');
+const STORAGE_KEY = 'feedback-form-state';
+const local = localStorage.getItem(STORAGE_KEY);
 
-const local = localStorage.getItem('feedback-form-state');
+const formData = {
+  email: '',
+  message: '',
+};
 
-console.log(formData);
 if (local) {
   const { email, message } = JSON.parse(local);
-  form.elements.email.value = email;
-  form.elements.message.value = message;
+  formData.email = email;
+  formData.message = message;
+  formEl.elements.email.value = email;
+  formEl.elements.message.value = message;
 }
-
+const handleInput = e => {
+  formData[e.target.name] = e.target.value.trim();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+};
 const handleSubmit = e => {
   e.preventDefault();
-  const formData = new FormData(form);
 
-  const data = {
-    email: formData.get('email'),
-    message: formData.get('message'),
-  };
-  localStorage.setItem('feedback-form-state', JSON.stringify(data));
-  form.reset();
+  const { email, message } = formData;
+  if (email === '' || message === '') {
+    alert('Fill please all fields');
+    return;
+  }
+  console.log(formData);
+  localStorage.removeItem(STORAGE_KEY);
+  formEl.reset();
 };
-form.addEventListener('submit', handleSubmit);
+formEl.addEventListener('input', handleInput);
+formEl.addEventListener('submit', handleSubmit);
