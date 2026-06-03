@@ -26,7 +26,11 @@ const handleSubmit = e => {
     alert('Fill please all fields');
     return;
   }
+  
   console.log(formData);
+
+  formData.email="";
+  formData.message="";
   localStorage.removeItem(STORAGE_KEY);
   formEl.reset();
 };
