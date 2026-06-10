@@ -1,18 +1,19 @@
-/* Styles for Mobile devices */
 .container {
-  max-width: 320px;
-  padding: 20px 10px;
+  width: 100%;
+  max-width: 1280px;
+  padding: 48px 18px;
   margin: 0 auto;
 }
+
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 768px;
-    padding: 20px;
+    padding: 64px 32px;
   }
 }
-@media screen and (min-width: 1200px) {
+
+@media screen and (min-width: 1280px) {
   .container {
-    max-width: 1128px;
-    padding: 20px 36px;
+    padding-right: 48px;
+    padding-left: 48px;
   }
 }
